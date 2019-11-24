@@ -3,6 +3,7 @@ const images = require('./images/images.service.js');
 const orders = require('./orders/orders.service.js');
 const galleries = require('./galleries/galleries.service.js');
 const upload = require('./upload/upload.service.js');
+const clients = require('./clients/clients.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
@@ -10,4 +11,6 @@ module.exports = function (app) {
   app.configure(orders);
   app.configure(galleries);
   app.configure(upload);
+  app.configure(clients);
+  app.configure(clients);
 };

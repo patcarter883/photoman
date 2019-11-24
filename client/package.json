@@ -21,6 +21,7 @@
     "exif-js": "^2.3.0",
     "feathers-hooks-common": "^4.20.7",
     "feathers-vuex": "^2.2.5",
+    "portal-vue": "^2.1.6",
     "quasar": "^1.0.0",
     "socket.io-client": "^2.3.0"
   },

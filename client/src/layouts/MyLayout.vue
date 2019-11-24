@@ -49,7 +49,35 @@
 
           <q-item-section>Orders</q-item-section>
         </q-item>
+
+        <q-item
+          clickable
+          v-ripple
+          to="/client"
+        >
+          <q-item-section avatar>
+            <q-icon name="people" />
+          </q-item-section>
+
+          <q-item-section>Clients</q-item-section>
+        </q-item>
+
       </q-list>
+      <template v-if="$store.state.auth.user && $hasRoles(['superadmin'])">
+        <q-separator spaced />
+        <div class="text-subtitle1 text-center">
+          Admin
+        </div>
+        <portal-target
+          name="admin-menu"
+          class="column"
+        >
+          <!--
+  This component can be located anywhere in your App.
+  The slot content of the above portal component will be rendered here.
+  -->
+        </portal-target>
+      </template>
     </q-drawer>
 
     <q-page-container>

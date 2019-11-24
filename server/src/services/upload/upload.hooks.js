@@ -11,7 +11,7 @@ module.exports = {
         if (!context.data.uri && context.params.file) {
           const file = context.params.file;
           const uri = dauria.getBase64DataURI(file.buffer, file.mimetype);
-          context.data = { uri: uri };
+          context.data = { ...context.data, uri: uri };
         }
       }
     ],
@@ -29,7 +29,8 @@ module.exports = {
         const imageService = context.app.service('images');
         const newImage = await imageService._create({
           blobId: context.result.id,
-          name: context.params.file.originalname
+          name: context.params.file.originalname,
+          galleryId: context.data.galleryId
         });
         context.result = newImage; //eslint-disable-line
       }

@@ -15,7 +15,8 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'gallery', component: () => import('pages/GalleryIndex.vue'), props: true, name: 'GalleryIndex' },
       { path: 'gallery/:galleryid', component: () => import('pages/GalleryDetail.vue'), props: true, name: 'GalleryDetail' },
-      { path: 'order/:orderid?', component: () => import('pages/Orders.vue'), props: true, name: 'Orders' }
+      { path: 'order/:orderid?', component: () => import('pages/Orders.vue'), props: true, name: 'Orders' },
+      { path: 'client', component: () => import('pages/Clients.vue'), props: true, name: 'Clients' }
     ]
   }
 ]

@@ -1,14 +1,16 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const tenantFilter = require('../../hooks/tenant_filter');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
-    find: [],
-    get: [],
-    create: [],
+    find: [tenantFilter()],
+    get: [tenantFilter()],
+    create: [tenantFilter()],
     update: [],
     patch: [],
-    remove: []
+    remove: [tenantFilter()]
   },
 
   after: {

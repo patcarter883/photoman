@@ -34,40 +34,20 @@
     </q-header>
     <q-page-container>
       <q-page padding>
-        <div class="q-gutter-sm">
-          <q-input
-            v-model="gallery.name"
-            label="Gallery Name"
-            filled
-          />
-          <q-select
-            filled
-            v-model="gallery.client"
-            :options="clients"
-            label="Client"
-            option-value="_id"
-            option-label="name"
-            emit-value
-            map-options
-          />
-        </div>
+        <q-input
+          v-model="client.name"
+          label="Client Name"
+          filled
+        />
       </q-page>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import { makeFindMixin } from 'feathers-vuex'
-
 export default {
-  name: 'Gallery',
-  mixins: [makeFindMixin({ service: 'clients' })],
-  props: ['gallery'],
-  computed: {
-    clientsParams () {
-      return { query: {} }
-    }
-  },
+  name: 'Client',
+  props: ['client'],
   data () {
     return {}
   },

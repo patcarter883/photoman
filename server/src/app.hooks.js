@@ -1,4 +1,4 @@
-// Application hooks that run for every service
+/* eslint-disable linebreak-style */
 
 module.exports = {
   before: {

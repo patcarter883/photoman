@@ -4,34 +4,46 @@
     class="q-pt-none"
   >
     <q-toolbar class="text-primary">
-
+      <q-btn
+        flat
+        dense
+        icon="add"
+        label="New Client"
+        @click="selectedClient = new $FeathersVuex.api.Client({}); drawerRight = true"
+      />
     </q-toolbar>
     <FeathersVuexFind
-      service="galleries"
+      service="clients"
       :query="{}"
       watch="query"
     >
-      <div
-        class="q-gutter-md q-pa-md row"
-        slot-scope="{ items: galleries }"
-      >
-        <gallery-card
-          v-for="gallery in galleries"
-          :key="gallery._id"
-          :gallery="gallery"
-        />
-      </div>
+      <template slot-scope="{ items: clients }">
+        <q-list
+          bordered
+          separator
+        >
+          <q-item
+            v-for="client in clients"
+            :key="client._id"
+            clickable
+            v-ripple
+            @click="selectedClient = client; drawerRight = true"
+          >
+            <q-item-section>{{ client.name }}</q-item-section>
+          </q-item>
+        </q-list>
+      </template>
     </FeathersVuexFind>
 
     <right-drawer v-model="drawerRight">
       <FeathersVuexFormWrapper
-        v-if="selectedGallery"
-        :item="selectedGallery"
+        v-if="selectedClient"
+        :item="selectedClient"
         watch
       >
         <template v-slot="{ clone, save, reset, remove }">
-          <gallery
-            :gallery="clone"
+          <client
+            :client="clone"
             @save="save().then(drawerRight = false)"
             @close="() => {
               drawerRight = false
@@ -46,35 +58,24 @@
       </FeathersVuexFormWrapper>
 
     </right-drawer>
-    <portal to="admin-menu">
-      <q-btn
-        v-if="$hasRoles(['superadmin'])"
-        flat
-        dense
-        icon="add"
-        label="New Gallery"
-        @click="selectedGallery = new $FeathersVuex.api.Gallery({}); drawerRight = true"
-      />
-    </portal>
+
   </q-page>
 </template>
 
 <script>
-import GalleryCard from 'components/galleryCard'
 import RightDrawer from 'components/RightDrawer'
-import Gallery from 'components/gallery'
+import Client from 'components/client'
 
 export default {
-  name: 'GalleryIndex',
+  name: 'Clients',
   components: {
-    GalleryCard,
-    RightDrawer,
-    Gallery
+    Client,
+    RightDrawer
   },
   data () {
     return {
       drawerRight: false,
-      selectedGallery: null
+      selectedClient: null
     }
   }
 }

@@ -1,23 +1,21 @@
 import feathersClient, { makeServicePlugin, BaseModel } from '../feathers-client'
 
-class Order extends BaseModel {
+class Client extends BaseModel {
   constructor(data, options) { //eslint-disable-line
     super(data, options)
   }
   // Required for $FeathersVuex plugin to work after production transpile.
-  static modelName = 'Order'
+  static modelName = 'Client'
   // Define default properties here
   static instanceDefaults () {
     return {
-      galleryId: null,
-      images: [],
-      status: 0
+      name: ''
     }
   }
 }
-const servicePath = 'orders'
+const servicePath = 'clients'
 const servicePlugin = makeServicePlugin({
-  Model: Order,
+  Model: Client,
   service: feathersClient.service(servicePath),
   servicePath
 })
