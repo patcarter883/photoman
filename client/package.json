@@ -17,7 +17,7 @@
     "@feathersjs/socketio-client": "^4.3.11",
     "@quasar/extras": "^1.0.0",
     "await-to-js": "^2.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "exif-js": "^2.3.0",
     "feathers-hooks-common": "^4.20.7",
     "feathers-vuex": "^2.2.5",
